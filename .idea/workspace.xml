@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="517f08c8-ab03-416d-9442-4d06468ac92b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CLUMondoPy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CLUMondoPy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/feature_selection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/io_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/prediction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/preprocessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/sampling.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
