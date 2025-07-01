@@ -5,3 +5,6 @@ rasterio
 geopandas
 xgboost
 joblib
+numba
+gdal
+openpyxl
