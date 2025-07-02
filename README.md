@@ -3,8 +3,9 @@
 This Python-based land use modeling script simulates land cover changes using principles inspired by the original **CLUMondo C++ model** created by Peter Verburg (link to the [Github repository](https://github.com/VUEG/CLUMondo) and link to the publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02759.x). 
 
 This repository contains two main sections:
--The land cover suitability modelling (which is a prerequisite for land use modelling in CLUMondo). You can find the relevant scripts in the folder [Suitability](CLUMondoPy/CLUMondoPy/Suitability/). 
--The proper allocation model based on CLUMondo. You can find the relevant scripts in the folder [CLUMondo](CLUMondoPy/CLUMondoPy/CLUMondo)
+
+-1. The land cover suitability modelling (which is a prerequisite for land use modelling in CLUMondo). You can find the relevant scripts in the folder [Suitability](CLUMondoPy/CLUMondoPy/Suitability/). 
+-2. The proper allocation model based on CLUMondo. You can find the relevant scripts in the folder [CLUMondo](CLUMondoPy/CLUMondoPy/CLUMondo)
 
 
 ---
