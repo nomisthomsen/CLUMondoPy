@@ -13,10 +13,14 @@ This Python-based land use modeling script simulates land cover changes using pr
 
 - `numpy`
 - `pandas`
+- `geopandas`
 - `rasterio`
 - `gdal`
 - `openpyxl`
 - `numba`
+- `joblib`
+- `scikit-learn`
+
 
 Install via:
 
