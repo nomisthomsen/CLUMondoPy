@@ -1,6 +1,7 @@
 # CLUMondo-Based Land Use Modeling
 
-This Python-based land use modeling script simulates land cover changes using principles inspired by the original **CLUMondo C++ model**. It accounts for location suitability, neighborhood effects, conversion resistance and allowance rules, and demand-driven land change dynamics.
+This Python-based land use modeling script simulates land cover changes using principles inspired by the original **CLUMondo C++ model** created by Peter Verburg (link to the [Github repository](https://github.com/VUEG/CLUMondo) and link to the publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02759.x). 
+
 
 ---
 
