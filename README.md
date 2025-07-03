@@ -41,6 +41,6 @@ Simon Thomsen (simon.thomsen@thuenen.de)
 Melvin Lippe (melvin.lippe@thuenen.de)
 
 ## License
-This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl-3.0.en.html).
+This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl-3.0.en.html). Please refer also to the [LICENSE](CLUMondoPy/LICENSE.md) file in this repository.
 
 
