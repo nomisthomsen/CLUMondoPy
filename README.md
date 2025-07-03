@@ -1,6 +1,6 @@
 # CLUMondoPy: CLUMondo-Based Land Use Modeling in Python
 
-This Python-based land use modeling script simulates land cover changes using principles inspired by the original **CLUMondo C++ model** created by Peter Verburg (link to the [Github repository](https://github.com/VUEG/CLUMondo) and link to the publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02759.x). 
+This Python-based land use modeling script simulates land cover changes using principles inspired by the original **CLUMondo C++ model** created by **Peter Verburg** (link to the [Github repository](https://github.com/VUEG/CLUMondo) and link to the publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02759.x)). 
 
 This repository contains two main sections:
 
