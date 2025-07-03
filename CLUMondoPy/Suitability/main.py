@@ -12,7 +12,7 @@ from prediction import predict_models
 from io_utils import write_logfile, write_array_to_geotiff
 
 
-def suitability(classification: str, env_vars: List[str], mode: Union[str, List[str]], region: str,
+def suitability(classification: str, env_vars: List[str], mode: Union[str, List[str]],
                 out_path: str, n_samples_corr: int,
                 vif_threshold: int = 5, min_distance: int = 1, test_fraction: float = 0.3,
                 random_state: Optional[int] = None, sample_points_shapefile: Optional[str] = None, sample_size_list: Optional[List[int]] = None,
@@ -27,7 +27,6 @@ def suitability(classification: str, env_vars: List[str], mode: Union[str, List[
     - classification: Path to land cover raster file.
     - env_vars: List of paths to environmental variable rasters.
     - mode: Model(s) to use ('logistic', 'random_forest', 'XGBoost', 'SVM', 'MLP').
-    - region: Path to raster defining the study area.
     - out_path: Directory for saving outputs.
     - n_samples_corr: Number of samples for correlation analysis.
     - sample_size_list: Number of samples to draw per class.
@@ -141,7 +140,6 @@ def suitability(classification: str, env_vars: List[str], mode: Union[str, List[
         write_logfile(
             out_path=outdir_name,
             classification=classification,
-            region=region,
             env_variables= env_vars,
             n_samples_corr=n_samples_corr,
             sample_size_list=sample_size_list,
@@ -189,16 +187,16 @@ def suitability(classification: str, env_vars: List[str], mode: Union[str, List[
                 disagg_out_arr = list(map(list, zip(*mode_results)))
                 out_arr = np.stack(disagg_out_arr[0])
                 out_arr = np.where(binary_mask[None, :, :] == 1, out_arr, no_data_value)
-                write_array_to_geotiff(out_arr, f"{outdir_name}suitability_stack.tif", region, no_data_value)
+                write_array_to_geotiff(out_arr, f"{outdir_name}suitability_stack.tif", classification, no_data_value)
                 for i in range(len(dyn_years)):
                     outname = f"{outdir_name}suitability_stack_{dyn_years[i]}.tif"
                     out_arr = np.stack(disagg_out_arr[i+1])
                     out_arr = np.where(binary_mask[None, :, :] == 1, out_arr, no_data_value)
-                    write_array_to_geotiff(out_arr, outname, region, no_data_value)
+                    write_array_to_geotiff(out_arr, outname, classification, no_data_value)
             else:
                 out_arr = np.stack(mode_results)
                 out_arr = np.where(binary_mask[None, :, :] == 1, out_arr, no_data_value)
-                write_array_to_geotiff(out_arr, f"{outdir_name}suitability_stack.tif", region, no_data_value)
+                write_array_to_geotiff(out_arr, f"{outdir_name}suitability_stack.tif", classification, no_data_value)
 
     # --- Step 6: Optional ensemble prediction ---
     if ensemble and len(mode) >= 3 and predict_outputs:
@@ -241,10 +239,10 @@ def suitability(classification: str, env_vars: List[str], mode: Union[str, List[
                 outname = f"{ensemble_outdir}suitability_ensemble_stack_{dyn_years[i + 1]}.tif" if i else f"{ensemble_outdir}suitability_ensemble_stack.tif"
                 out_arr = np.stack(arr)
                 out_arr = np.where(binary_mask[None, :, :] == 1, out_arr, no_data_value)
-                write_array_to_geotiff(out_arr, outname, region, no_data_value)
+                write_array_to_geotiff(out_arr, outname, classification, no_data_value)
         else:
             out_arr = np.stack(ensemble_results)
             out_arr = np.where(binary_mask[None, :, :] == 1, out_arr, no_data_value)
-            write_array_to_geotiff(out_arr, f"{ensemble_outdir}suitability_ensemble_stack.tif", region, no_data_value)
+            write_array_to_geotiff(out_arr, f"{ensemble_outdir}suitability_ensemble_stack.tif", classification, no_data_value)
 
         print(f"Ensemble suitability maps saved to: {ensemble_outdir}")
