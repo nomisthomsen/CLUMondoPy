@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ---
 
 ## Authors
-Simon Thomsen (simon.thomsen@thuenen.de)
+Simon Thomsen (simon.thomsen@thuenen.de);
 Melvin Lippe (melvin.lippe@thuenen.de)
 
 ## License
