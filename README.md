@@ -4,7 +4,7 @@ This Python-based land use modeling script simulates land cover changes using pr
 
 This repository contains two main sections:
 
-1. The land cover suitability modelling (which is a prerequisite for land use modelling in CLUMondo). You can find the relevant scripts in the folder [Suitability](CLUMondoPy/CLUMondoPy/Suitability/) and the manual as [PDF here](CLUMondoPy/Suitability_Modelling_Manual.pdf).
+1. The land cover suitability modelling (which is a prerequisite for land use modelling in CLUMondo). You can find the relevant scripts in the folder [Suitability](CLUMondoPy/CLUMondoPy/Suitability/) and the manual as [PDF here](Suitability_Modelling_Manual.pdf).
   
 2. The proper allocation model based on CLUMondo. You can find the relevant scripts in the folder [CLUMondo](CLUMondoPy/CLUMondoPy/CLUMondo) and the manual as [PDF here](CLUMondoPy/CLUMondoPy_Manual.pdf)
 
