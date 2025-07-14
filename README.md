@@ -1,6 +1,6 @@
 # CLUMondoPy: CLUMondo-Based Land Use Modeling in Python
 
-This Python-based land use modeling script simulates land use and land cover changes (LULCC) using principles inspired by the original **CLUMondo C++ model** created by **Peter Verburg** (link to the [Github repository](https://github.com/VUEG/CLUMondo) and link to the publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02759.x)). 
+This Python-based land use modeling script simulates land use and land cover changes (LULCC) using principles inspired by the original **CLUMondo C++ model** created by **Peter Verburg** (link to the [Github repository](https://github.com/VUEG/CLUMondo) and link to the publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12331)). 
 
 This repository contains two main sections:
 
@@ -12,7 +12,7 @@ This repository contains two main sections:
 
 ![image](schematic_workflow.jpg)
 
-This figure gives an overview of the modelling modules (suitability and LULCC) and comprehensive overview of the modelling framework. The figure is an adaptation of a figure published in the original publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/10.1111/j.1365-2486.2012.02759.x).
+This figure gives an overview of the modelling modules (suitability and LULCC) and comprehensive overview of the modelling framework. The figure is an adaptation of a figure published in the original publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12331).
 
 
 ---
