@@ -10,7 +10,7 @@ This repository contains two main sections:
 
 ---
 <p align="center">
-  <img src="schematic_workflow.jpg" alt="image" style="margin: 150px 0;">
+  <img src="schematic_workflow.jpg" alt="image" style="margin: 150px;">
 </p>
 
 This figure gives an overview of the modelling modules (suitability and LULCC) and comprehensive overview of the modelling framework. The figure is an adaptation of a figure published in the original publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12331).
