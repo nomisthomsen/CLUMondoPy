@@ -9,11 +9,7 @@ This repository contains two main sections:
 2. The proper LULCC model based on CLUMondo. You can find the relevant scripts in the folder [CLUMondo](CLUMondoPy/CLUMondo) and the manual as [PDF here](CLUMondoPy_Manual.pdf)
 
 ---
-<p align="center">
-  <img src="schematic_workflow.jpg" alt="image" style="margin: 150px;">
-</p>
-
-This figure gives an overview of the modelling modules (suitability and LULCC) and comprehensive overview of the modelling framework. The figure is an adaptation of a figure published in the original publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12331).
+A figure which gives an overview of the modelling modules can be found in the original publication by [van Asselen & Verburg 2012](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12331).
 
 
 ---
