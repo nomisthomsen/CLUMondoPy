@@ -30,13 +30,6 @@ A figure which gives an overview of the modelling modules can be found in the or
 - `joblib`
 - `scikit-learn`
 
-
-Install via:
-
-```bash
-pip install -r requirements.txt
-```
-
 ---
 
 ## Authors
