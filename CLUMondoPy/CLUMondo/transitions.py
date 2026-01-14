@@ -4,7 +4,7 @@ from numba import njit, prange
 
 @njit(parallel=True)
 def calc_change(land_cover_array: np.ndarray,
-                reg_array_stack: np.ndarray,
+                suit_array_stack: np.ndarray,
                 region_array: np.ndarray,
                 neigh_array_stack: np.ndarray,
                 dem_weights: np.ndarray,
@@ -23,7 +23,7 @@ def calc_change(land_cover_array: np.ndarray,
 
     Parameters:
         land_cover_array (numpy.ndarray): Array representing the current land cover.
-        reg_array_stack (numpy.ndarray): Array representing regression values for land cover classes.
+        suit_array_stack (numpy.ndarray): Array representing suitability values for land cover classes.
         region_array (numpy.ndarray): Array representing regions where land cover change may be restricted.
         neigh_array_stack (numpy.ndarray): Array representing neighbourhood influence for land cover classes.
         dem_weights (numpy.ndarray): Array of weights for land use services demands.
@@ -52,7 +52,7 @@ def calc_change(land_cover_array: np.ndarray,
         for k in range(n_col):
             # If value is lower -9990 or region restriction is applied, no change in land cover
             old_cov = int(land_cover_array[j, k])
-            reg_values = reg_array_stack[:, j, k]
+            suit_values = suit_array_stack[:, j, k]
             if zonal_array is not None:
                 zonal_values = np.zeros(n_lcov, dtype=np.uint8)
                 zonal_values = zonal_array[:, j, k].astype(np.uint8)
@@ -63,12 +63,12 @@ def calc_change(land_cover_array: np.ndarray,
                 pref_values = (preference_array[:, j, k] * preference_weights).astype(np.float32)
             else:
                 pref_values = np.zeros(n_lcov, dtype=np.float32)
-            if no_data_value in reg_values:
+            if no_data_value in suit_values:
                 region_array[j, k] = 1
             if old_cov == no_data_value or region_array[j, k] == 1:
                 new_lc[j, k] = old_cov
             else:
-                reg_values = reg_array_stack[:, j, k]  # * reg_weights
+                suit_values = suit_array_stack[:, j, k]  # * reg_weights
                 neigh_values = neigh_array_stack[:, j, k]
                 max_pot = -30
                 allowed_row = allow[old_cov, :]
@@ -90,7 +90,7 @@ def calc_change(land_cover_array: np.ndarray,
                                     sum_elas += dem_elas[d]
                                 elif lus_conv[old_cov, d] > lus_conv[i, d]:
                                     sum_elas -= dem_elas[d]
-                            temp_max = reg_values[i] + pref_values[i] + neigh_values[i] + sum_elas
+                            temp_max = suit_values[i] + pref_values[i] + neigh_values[i] + sum_elas
                         else:
                             # Not old enough for conversion
                             temp_max = -30
@@ -110,9 +110,9 @@ def calc_change(land_cover_array: np.ndarray,
                                 elif lus_conv[old_cov, d] > lus_conv[i, d]:
                                     sum_elas -= dem_elas[d]
                             if old_cov == i:
-                                temp_max = reg_values[i] + pref_values[i] + neigh_values[i] + sum_elas + conv_res[i]
+                                temp_max = suit_values[i] + pref_values[i] + neigh_values[i] + sum_elas + conv_res[i]
                             else:
-                                temp_max = reg_values[i] + pref_values[i] + neigh_values[i] + sum_elas
+                                temp_max = suit_values[i] + pref_values[i] + neigh_values[i] + sum_elas
 
                     # Check whether transition is only allowed in  specific zone (indicated by 2 instead of 2)
                     elif allowed_row[i] == 2:
@@ -123,7 +123,7 @@ def calc_change(land_cover_array: np.ndarray,
                                     sum_elas += dem_elas[d]
                                 elif lus_conv[old_cov, d] > lus_conv[i, d]:
                                     sum_elas -= dem_elas[d]
-                            temp_max = reg_values[i] + pref_values[i] + neigh_values[i] + sum_elas
+                            temp_max = suit_values[i] + pref_values[i] + neigh_values[i] + sum_elas
                         else:
                             temp_max = -30
 
@@ -136,9 +136,9 @@ def calc_change(land_cover_array: np.ndarray,
                             elif lus_conv[old_cov, d] > lus_conv[i, d]:
                                 sum_elas -= dem_elas[d]
                         if old_cov == i:
-                            temp_max = reg_values[i] + pref_values[i] + neigh_values[i] + sum_elas + conv_res[i]
+                            temp_max = suit_values[i] + pref_values[i] + neigh_values[i] + sum_elas + conv_res[i]
                         else:
-                            temp_max = reg_values[i] + pref_values[i] + neigh_values[i] + sum_elas
+                            temp_max = suit_values[i] + pref_values[i] + neigh_values[i] + sum_elas
 
                     # Track the land cover type with the highest score
                     if temp_max > max_pot:
