@@ -6,12 +6,12 @@ import random
 import rasterio
 from typing import List, Optional, Union
 
-from io_utils import writeArray2GeoTIFF, check_no_data_value
-from logging_utils import create_timestamped_subfolder, log_metadata, log_initial_data
-from neighbourhood import calc_neigh
-from transitions import calc_change
-from demand import comp_demand
-from age import calc_age, autonomous_change
+from .io_utils import writeArray2GeoTIFF, check_no_data_value
+from .logging_utils import create_timestamped_subfolder, log_metadata, log_initial_data
+from .neighbourhood import calc_neigh
+from .transitions import calc_change
+from .demand import comp_demand
+from .age import calc_age, autonomous_change
 
 def clumondo_dynamic(land_array: np.ndarray,
                      suit_array: np.ndarray,
@@ -85,11 +85,14 @@ def clumondo_dynamic(land_array: np.ndarray,
     # Update region array with no data values from suitability layer
     region_array[suit_array[0]==no_data_value] = 1
 
-    if out_year is not None:
-        if isinstance(out_year, int):
-            out_year = [out_year]
-        elif not isinstance(out_year, list):
-            raise ValueError("Parameter 'out_year' must be an int or list of ints")
+    if out_year is None:
+        out_year_set = None  # means "all years"
+    elif isinstance(out_year, int):
+        out_year_set = {out_year}
+    elif isinstance(out_year, (list, tuple)):
+        out_year_set = set(out_year) if len(out_year) > 0 else None  # empty -> all
+    else:
+        raise ValueError("Parameter 'out_year' must be an int, list/tuple of ints, or None")
 
     # Autonomous change activate?
     autonomous_change_mode = False
@@ -186,7 +189,7 @@ def clumondo_dynamic(land_array: np.ndarray,
                 new_cov = autonomous_change(new_cov, old_cov, old_age, allow, no_data_value)
             # Calculate new age array if provided
             new_age = calc_age(old_cov, new_cov, old_age)
-            if out_year is None or year in out_year:
+            if out_year_set is None or year in out_year_set:
                 new_age_out = new_age.copy()
                 new_age_out[new_age_out == no_data_value] = no_data_out
                 outname = os.path.join(subdir, 'age' + str(year) + '.tif')
@@ -194,7 +197,7 @@ def clumondo_dynamic(land_array: np.ndarray,
             old_age = new_age
 
         # Write new land cover raster
-        if out_year is None or year in out_year:
+        if out_year_set is None or year in out_year_set:
             outname = os.path.join(subdir, 'cov' + str(year) + '.tif')
             # writeArray2Raster(new_cov, outname, ras_info)
             new_cov_out = new_cov.copy()
