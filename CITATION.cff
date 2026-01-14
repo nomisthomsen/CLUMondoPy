@@ -1,0 +1,19 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: CLUMondoPy
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Simon
+    family-names: Thomsen
+    email: simon.thomsen@thunen.de
+    affiliation: Johann Heinrich von Thünen Institut
+  - given-names: Melvin
+    family-names: Lippe
+    email: melvin.lippe@thuenen.de
+    affiliation: Johann Heinrich von Thünen Institut
+repository-code: 'https://github.com/nomisthomsen/CLUMondoPy'
