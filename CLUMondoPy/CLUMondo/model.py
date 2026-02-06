@@ -60,16 +60,30 @@ def clumondo_dynamic(land_array: np.ndarray,
         lus_conv (numpy.ndarray): Array representing conversion factors for land use services demands.
         lus_matrix_path (str): Array representing land use service matrix OR path to dynamic lus_matrix files.
         allow (numpy.ndarray): Array representing allowed land use changes.
+        conv_res (numpy.ndarray): 1d array which represents the conversion resistances per land use class.
         max_diff_allow (float): Maximum allowed difference in land cover change.
         totdiff_allow (float): Maximum allowed total difference in land cover change.
         max_iter (int): Maximum number of iterations for each year.
         out_dir (str): Output directory path where results are stored.
-        #add crs, dtype and no_data_out
+        crs (str): CRS for the output files (e.g. 'EPSG:32750').
+        dtype(str): Datatype for output files. One of 'int8', 'int16' or 'float32'.
         ref_raster_path (str): Path to the reference raster file.
-        change_years (list of int): Years where changes in suitability (`suit_array`) occur.
+        change_years (list of int): Years in which changes in suitability (`suit_array`) occur.
         change_paths (list of str): Paths to the suitability change raster files.
+        metadata (list of str): List of paths to input raster data (land cover, suitability etc.)
         age_array (numpy.ndarray, optional): Array representing the age of land cover. Defaults to None.
+        zonal_array (numpy.ndarray, optional): Array representing defined zones for specific land cover expansion (e.g. concession areas)
+        preference_array (numpy.ndarray, optional): Array representing zones which should be prefered for specific land cover expansion.
+                                                    Similar to zonal_array, but less restrictive.
+        preference_weights (np.ndarray, optional): 1d array representing the weights of preferences in preference_array for each land cover class.
+        width_neigh (int, optional): Width that should be applied to calculate the influence of neighbouring pixels. A width of 1 equals a 3x3 window, 2 a 5x5 window etc.
+        demand_max (float, optional): Maximum demand elasticity values (absolute), before it is set back.
+        demand_setback (float, optional): Absolute set back value after reaching maximum demand elasticity (demand_max).
+        no_data_out (int, optional): Value to insert for no_data_values in the output file. Depending on datatype, either -127 (int8) or -9999 (int16, float32) is recommended.
+        out_year (int or list of int, optional): Either an integer or a list of integers indicating years for which output rasters should be written.
+                                                If nothing is provided, output will be written for all years.
         no_data_value (int, optional): Value representing no data. Defaults to -9999.
+
     """
     # Information from reference raster to write rasters in the function
     raster_ds = gdal.Open(ref_raster_path)
@@ -125,7 +139,6 @@ def clumondo_dynamic(land_array: np.ndarray,
             # Initialize demand elasticities array
             dem_elas = np.zeros(len(dem_weights), dtype="float32")
             # Create a timestamped subfolder for each year
-            #dem_elas = np.zeros(len(dem_weights), dtype="float32")
             subdir = create_timestamped_subfolder(out_dir)
             log_file_path = os.path.join(subdir, 'logfile.txt')
 

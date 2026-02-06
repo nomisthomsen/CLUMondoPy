@@ -246,3 +246,4 @@ def suitability(classification: str, env_vars: List[str], mode: Union[str, List[
             write_array_to_geotiff(out_arr, f"{ensemble_outdir}suitability_ensemble_stack.tif", classification, no_data_value)
 
         print(f"Ensemble suitability maps saved to: {ensemble_outdir}")
+

@@ -18,6 +18,8 @@ def comp_demand(demand_i: np.ndarray,
         lus_matrix (numpy.ndarray): Array representing land use service matrix.
         dem_elas (numpy.ndarray): Array representing elasticity of demand for each land use service.
         speed (float): Speed variable.
+        demand_max (float): Maximum demand elasticity values (absolute), before it is set back.
+        demand_setback (float): Absolute set back value after reaching maximum demand elasticity (demand_max).
         no_data_value (int, optional): Value representing no data in cur_land_use_array. Defaults to -9999.
 
     Returns:

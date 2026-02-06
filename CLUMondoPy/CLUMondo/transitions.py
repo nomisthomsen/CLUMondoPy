@@ -31,6 +31,11 @@ def calc_change(land_cover_array: np.ndarray,
         conv_res (numpy.ndarray): Array representing conversion resistance for land use classes.
         allow (numpy.ndarray): Array representing allowed land use changes.
         lus_conv (numpy.ndarray): Array representing conversion factors for land use services demands.
+        zonal_array (numpy.ndarray, optional): Array representing defined zones for specific land cover expansion (e.g. concession areas)
+        preference_array (numpy.ndarray, optional): Array representing zones which should be prefered for specific land cover expansion.
+                                                    Similar to zonal_array, but less restrictive.
+        preference_weights (np.ndarray, optional): 1d array representing the weights of preferences in preference_array for each land cover class.
+        age_array (numpy.ndarray, optional): Array representing the age of land cover. Defaults to None.
         no_data_value (int, optional): Value representing no data in land_cover_array. Defaults to -9999.
 
     Returns:

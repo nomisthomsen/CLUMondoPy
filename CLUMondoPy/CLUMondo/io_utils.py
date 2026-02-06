@@ -12,6 +12,8 @@ def writeArray2GeoTIFF(array: np.ndarray, outpath: str, rasInfo: List[float], no
     :param array: The 2D array to be written to the GeoTIFF file.
     :param outpath: The output path for the GeoTIFF file.
     :param rasInfo: A list containing raster information: [NCOLS, NROWS, XLLCORNER, YLLCORNER, CELLSIZE, NODATA_VALUE]
+    :param no_data_out: Value to insert for no_data_values in the output file. Depending on datatype, either -127 (int8) or -9999 (int16, float32) is recommended
+    :param dtype: One of "int8", "int16", "float32"
     :param crs: A string indicating the EPSG in the following format "EPSG:4326"
     :return: None
     """
