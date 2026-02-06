@@ -157,7 +157,6 @@ def clumondo_dynamic(land_array: np.ndarray,
         totdiff = 1000
 
         # Initialize demand elasticities array
-        #dem_elas = np.zeros(len(dem_weights), dtype="float32")
 
         # Generate a random seed for speed calculation
         seed = random.random()
@@ -167,12 +166,6 @@ def clumondo_dynamic(land_array: np.ndarray,
 
         # Calculate neighbourhood
         neigh_array = calc_neigh(old_cov, width_neigh, neigh_weights)
-
-
-        # To do:
-        # Persistent parallelization:
-        # Split arrays before while loop
-        # Only report freq from the land cover array to the compare demand function
 
         # Iterate until convergence or max iterations reached
         while loop < max_iter and (maxdiff > max_diff_allow or totdiff > totdiff_allow):
@@ -189,7 +182,6 @@ def clumondo_dynamic(land_array: np.ndarray,
             # Log metadata for each iteration
             log_metadata(log_file_path,
                          f"Year: {year}, loop: {loop}, demand elasticities: {dem_elas}, differences: {diffarr},total difference: {totdiff}, maximum difference: {maxdiff}")
-            # log_metadata(log_file_path, f"Land cover shares: {calcRelFreq(land_array, no_data_value)}")
         if loop == max_iter:
             print('Error')
             break
@@ -212,7 +204,6 @@ def clumondo_dynamic(land_array: np.ndarray,
         # Write new land cover raster
         if out_year_set is None or year in out_year_set:
             outname = os.path.join(subdir, 'cov' + str(year) + '.tif')
-            # writeArray2Raster(new_cov, outname, ras_info)
             new_cov_out = new_cov.copy()
             new_cov_out[new_cov_out == no_data_value] = no_data_out
             writeArray2GeoTIFF(new_cov_out, outname, ras_info, no_data_out, crs, dtype)
