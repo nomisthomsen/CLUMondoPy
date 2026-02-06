@@ -13,22 +13,109 @@ A figure which gives an overview of the modelling modules can be found in the or
 
 ---
 
+## Repository Structure (important)
+
+The Python source code lives inside the `CLUMondoPy/` folder.
+
+✅ **To run the model without installing the package**, change directory into `CLUMondoPy/` first (see Quickstart below).  
+✅ Alternatively, install the repo in editable mode (`pip install -e .`) and run from anywhere.
+
+
 ## Requirements
 
-- Python **3.8+**
+- Python **3.8+** (recommended: **3.10/3.11**)
+- Recommended environment manager: **Miniforge / Anaconda / Mambaforge** (Conda-based)
 
-### Required Python Packages
+### Required Python packages
 
-- `numpy`
-- `pandas`
-- `geopandas`
-- `rasterio`
-- `gdal`
+Core dependencies include:
+- `numpy`, `pandas`, `geopandas`
+- `rasterio`, `gdal`
 - `openpyxl`
-- `numba`
-- `joblib`
+- `numba`, `joblib`
 - `scikit-learn`
 
+> Note: Geospatial packages (`gdal`, `rasterio`, `geopandas`) are often easiest to install via **conda-forge**.
+
+---
+## Installation
+
+### Recommended option: Conda / Miniforge (geospatial-friendly)
+
+Create an environment (example name: `clupy`) and install dependencies.
+
+```bash
+conda create -n clupy python=3.10
+conda activate clupy
+```
+
+Install dependencies (recommended via conda-forge for geospatial packages):
+```bash
+conda install -c conda-forge numpy pandas geopandas rasterio gdal openpyxl numba joblib scikit-learn
+```
+
+Optional (recommended for development / stable imports):
+```bash
+pip install -e .
+```
+---
+## Quickstart: Run CLUMondoPy
+The main entrypoint is:
+- `CLUMondoPy/Scripts/run_CLUMondoPy.py`
+The script calls model logic from:
+- `CLUMondoPy/CLUMondo/`
+
+### 1) Run without installing (simple)
+**Always run from the `CLUMondoPy/` directory** (the folder containing `CLUMondo/`, `Scripts/`, `Suitability/`)
+
+**Windows (Powershell/ Windows Terminal):**
+```powershell
+cd "\path\to\repo-root\CLUMondoPy"
+conda run --no-capture-output -n clupy python -m Scripts.run_CLUMondoPy --config "path\to\config_file.txt"
+```
+
+**Windows (Anaconda Prompt/ Miniforge Prompt):**
+```bat
+cd \path\to\repo-root\CLUMondoPy
+conda activate clupy
+python -m Scripts.run_CLUMondoPy --config "path\to\config_file.txt"
+```
+
+**Linux/ HPC (bash):**
+```bash
+cd /path/to/repo-root/CLUMondoPy
+conda activate clupy
+python -m Scripts.run_CLUMondoPy --config "/path/to/config_file.txt"
+```
+
+### 2) Run after installing (`pip install -e .`)
+If you installed in editable mode, you can still run using -m (recommended), and you are less sensitive to the current directory:
+```bash
+python -m Scripts.run_CLUMondoPy --config "/path/to/config_file.txt"
+```
+---
+## Configuration
+
+The model is executed using a --config text file. The config typically contains:
+
+- file paths to required inputs (rasters, Excel tables, etc.)
+- model/scenario parameters
+- output paths or output directory settings
+
+Please refer to the [manual](CLUMondoPy_Manual.pdf) for a complete list of input requirements for the configuration txt file.
+
+### Path notes
+
+**Windows:** quote paths, especially if they contain spaces.
+
+Both `E:\folder\file.txt` and `E:/folder/file.txt` are typically fine for Python.
+
+---
+
+## Suitability Modelling
+Suitability modelling is a prerequisite for CLUMondo-based land use modelling with CLUMondoPy.
+- Code: `CLUMondoPy/Suitability/`
+- [Manual](Suitability_Modelling_Manual.pdf) 
 ---
 
 ## Authors
