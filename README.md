@@ -33,7 +33,7 @@ Core dependencies include:
 - `rasterio`, `gdal`
 - `openpyxl`
 - `numba`, `joblib`
-- `scikit-learn`
+- `scikit-learn`, `statsmodels`, `scipy`, `xgboost`
 
 > Note: Geospatial packages (`gdal`, `rasterio`, `geopandas`) are often easiest to install via **conda-forge**.
 
