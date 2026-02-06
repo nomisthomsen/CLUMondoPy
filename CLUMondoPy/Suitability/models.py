@@ -50,52 +50,52 @@ def calc_log_regression_for_class(df: pd.DataFrame, variable_names: List[str], c
     df_comb = pd.concat([df_sub, df_sub2])
     df_comb["presence"] = [1] * df_sub.shape[0] + [0] * df_sub.shape[0]
 
-    X = df_comb[variable_names]
+    x = df_comb[variable_names]
     y = df_comb["presence"]
 
     # Step 1: Split before feature selection
-    X_train_full, X_test_full, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+    x_train_full, x_test_full, y_train, y_test = train_test_split(x, y, test_size=test_size, random_state=random_state)
 
     # Step 2: Temporarily scale all features for RFECV (but don’t save this scaler)
     if apply_scaling:
         temp_scaler = StandardScaler()
-        X_train_scaled_temp = temp_scaler.fit_transform(X_train_full)
+        x_train_scaled_temp = temp_scaler.fit_transform(x_train_full)
     else:
-        X_train_scaled_temp = X_train_full
+        x_train_scaled_temp = x_train_full
 
     # Step 3: Feature selection with RFECV on (optionally scaled) training data
     base_model = LogisticRegression(max_iter=3000, solver="liblinear")
     rfecv = RFECV(estimator=base_model, step=1, cv=StratifiedKFold(5), n_jobs=2,
                   min_features_to_select=3, scoring='roc_auc')
-    rfecv.fit(X_train_scaled_temp, y_train)
+    rfecv.fit(x_train_scaled_temp, y_train)
 
     # Step 4: Extract selected variables
     filtered_variables = [var for var, keep in zip(variable_names, rfecv.get_support()) if keep]
 
     # Step 5: Reduce to selected features
-    X_train_selected = X_train_full[filtered_variables]
-    X_test_selected = X_test_full[filtered_variables]
+    x_train_selected = x_train_full[filtered_variables]
+    x_test_selected = x_test_full[filtered_variables]
 
     # Step 6: Apply final scaling and save it
     if apply_scaling:
         final_scaler = StandardScaler()
-        X_train_selected = final_scaler.fit_transform(X_train_selected)
-        X_test_selected = final_scaler.transform(X_test_selected)
+        x_train_selected = final_scaler.fit_transform(x_train_selected)
+        x_test_selected = final_scaler.transform(x_test_selected)
         joblib.dump(final_scaler, os.path.join(folder_name, 'scaler_' + str(class_id) + '.pkl'))
 
     # Step 7: Fit final model on selected + scaled features
     final_model = LogisticRegression(max_iter=3000, solver="liblinear")
-    final_model.fit(X_train_selected, y_train)
+    final_model.fit(x_train_selected, y_train)
 
     # Step 8: Evaluate performance
-    auc_roc = roc_auc_score(y_test, final_model.predict_proba(X_test_selected)[:, 1])
+    auc_roc = roc_auc_score(y_test, final_model.predict_proba(x_test_selected)[:, 1])
     intercept = final_model.intercept_[0]
     coefficients = final_model.coef_.tolist()[0]
 
     # Compute permutation importances
     perm_result = permutation_importance(
         final_model,
-        X_test_selected,
+        x_test_selected,
         y_test,
         n_repeats=30,
         scoring='roc_auc',
