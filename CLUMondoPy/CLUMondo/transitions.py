@@ -8,7 +8,6 @@ def calc_change(land_cover_array: np.ndarray,
                 region_array: np.ndarray,
                 neigh_array_stack: np.ndarray,
                 dem_weights: np.ndarray,
-                #reg_weights: np.ndarray,
                 dem_elas: np.ndarray,
                 conv_res: np.ndarray,
                 allow: np.ndarray,
@@ -73,7 +72,7 @@ def calc_change(land_cover_array: np.ndarray,
             if old_cov == no_data_value or region_array[j, k] == 1:
                 new_lc[j, k] = old_cov
             else:
-                suit_values = suit_array_stack[:, j, k]  # * reg_weights
+                suit_values = suit_array_stack[:, j, k]
                 neigh_values = neigh_array_stack[:, j, k]
                 max_pot = -30
                 allowed_row = allow[old_cov, :]

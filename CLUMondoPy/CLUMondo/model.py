@@ -183,8 +183,14 @@ def clumondo_dynamic(land_array: np.ndarray,
             log_metadata(log_file_path,
                          f"Year: {year}, loop: {loop}, demand elasticities: {dem_elas}, differences: {diffarr},total difference: {totdiff}, maximum difference: {maxdiff}")
         if loop == max_iter:
+            # If maximum number of loops is reached and no solution is found, break the process and write last iterated raster to drive
             print('Error')
+            outname = os.path.join(subdir, 'cov' + str(year) + '_error.tif')
+            new_cov_out = land_array.copy()
+            new_cov_out[new_cov_out == no_data_value] = no_data_out
+            writeArray2GeoTIFF(new_cov_out, outname, ras_info, no_data_out, crs, dtype)
             break
+            
         # Log separator between iterations
         log_metadata(log_file_path, '##########################################')
         new_cov = land_array

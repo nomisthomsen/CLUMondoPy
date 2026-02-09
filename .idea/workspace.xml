@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="517f08c8-ab03-416d-9442-4d06468ac92b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLUMondoPy/Suitability/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLUMondoPy/Suitability/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/CLUMondoPy/Suitability/preprocessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLUMondoPy/CLUMondo/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/CLUMondoPy/CLUMondo/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLUMondoPy/CLUMondo/transitions.py" beforeDir="false" afterPath="$PROJECT_DIR$/CLUMondoPy/CLUMondo/transitions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,14 +46,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
