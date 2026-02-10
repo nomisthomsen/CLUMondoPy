@@ -20,7 +20,7 @@ The following raster data is provided:
 
 <!-- TODO: Insert a figure showing example rasters / layers here -->
 
-| Raster file name | Description | Source | Download link | Comment |
+| Raster file name | Description | Source | Download link/ Data source | Comment |
 |---|---|---|---|---|
 | `lc2016.tif` | Land cover map for 2016 | MAE | http://mapainteractivo.ambiente.gob.ec/ | Online access no longer avaialable |
 | `protected_areas_nacionales.tif` | Binary map of national protected areas | MapBiomas Ecuador | https://storage.googleapis.com/mapbiomas-workspace/TERRITORIES/INDEXED/ECUADOR/WORKSPACE/PROTECTED_AREAS_NACIONALES/PROTECTED_AREAS_NACIONALES_v2.zip |  |
