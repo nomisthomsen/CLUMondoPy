@@ -12,7 +12,7 @@ This tutorial offers a way for potential users of CLUMondoPy to test the script 
 We use the Canton Loreto district in Ecuador as a case study area for our test data. Loreto is located in the Western part of the Ecuadorian Amazon and has experienced high dynamics in land use change over the past decades. [ Lippe et al. 2022](https://www.sciencedirect.com/science/article/pii/S0264837722002344) have projected land use change in Loreto until 2030 with DynaCLUE. Hence, for more context on the study area we kindly refer to this paper.
 
 ![Study area map](testdata/land_cover_map_2016.jpg)
-*Figure 1. Land cover map of Loreto canton for the year 2016.*
+*Figure 1. Land cover map of Loreto canton for the year 2016 (figure created by S. Thomsen 2026).*
 
 ## Data
 
