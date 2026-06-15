@@ -99,7 +99,7 @@ def predict_models(class_id: int, model: ClassifierMixin, filtered_vars: List[st
                 data_array_year[initial_indices[i]] = dyn_sub_array
 
             # Mask the data where no data values are present
-            data_array_year = np.ma.masked_equal(data_array_flt, no_data_value)
+            data_array_year = np.ma.masked_equal(data_array_year, no_data_value)
 
             # Flatten the layers of the updated data for prediction
             flattened_layers_year = [layer.flatten() for layer in data_array_year]
@@ -108,7 +108,7 @@ def predict_models(class_id: int, model: ClassifierMixin, filtered_vars: List[st
             data_array_2d_year = np.vstack(flattened_layers_year).transpose()
 
             # Predict probabilities for the current year using the model
-            pred_array_year = batch_predict_proba(model, data_array_2d)
+            pred_array_year = batch_predict_proba(model, data_array_2d_year)
 
             # Reshape the predicted array back to the original 2D shape
             pred_array_2d_year = np.reshape(pred_array_year, (vif_vars.shape[1], vif_vars.shape[2]))
