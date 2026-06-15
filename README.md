@@ -70,7 +70,7 @@ The script calls model logic from:
 **Windows (Powershell/ Windows Terminal):**
 ```powershell
 cd "\path\to\repo-root\src"
-conda run --no-capture-output -n clupy python -m scripts.run_CLUinPy --config "path\to\config_file.txt"
+path\to\env\python.exe -m scripts.run_CLUinPy --config "path\to\config_file.txt"
 ```
 
 **Windows (Anaconda Prompt/ Miniforge Prompt):**
@@ -84,7 +84,7 @@ python -m scripts.run_CLUinPy --config "path\to\config_file.txt"
 ```bash
 cd /path/to/repo-root/src
 conda activate clupy
-python -m scripts.run_CLUMondoPy --config "/path/to/config_file.txt"
+python -m scripts.run_CLUinPy --config "/path/to/config_file.txt"
 ```
 
 ### 2) Run after installing (`pip install -e .`)
