@@ -172,8 +172,6 @@ def clu_dynamic(land_array: np.ndarray,
         maxdiff = 1000
         totdiff = 1000
 
-        # Initialize demand elasticities array
-
         # Generate a random seed for speed calculation
         seed = random.random()
         if seed > 0.9 or seed < 0.001:
